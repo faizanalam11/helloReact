@@ -3,36 +3,32 @@ import { useState, useEffect } from "react";
 import Shimmer from "./shimmerUI";
 
 function filterData(searchText, allRestaurants){
-    const filterData = allRestaurants.filter((restaurant) => 
+    const filterData = allRestaurants?.filter((restaurant) => 
         restaurant?.info?.name?.toUpperCase()?.includes(searchText.toUpperCase())
     );
     return filterData;
 }
 
 const Body = () => {
-    const [allRestaurants, setAllRestaurants] = useState([]);
-    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [allRestaurants, setAllRestaurants] = useState(null);
+    const [filteredRestaurants, setFilteredRestaurants] = useState(null);
     const [searchText, setSearchText] = useState(""); //Returns an array --> [variable name, function to update the variable]
 
     useEffect(() => {
         getRestaurants();
     },[]);
-    //when i kept my dependency array empty i got undefined
 
     async function getRestaurants(){
-        try{
-            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.29844139999999&lng=77.99313599999999&page_type=DESKTOP_WEB_LISTING");
-            const responseJson = await response.json();
-
-            console.log(responseJson);            setAllRestaurants(responseJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-            setFilteredRestaurants(responseJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        }
-        catch{
-            return <h1>Error 404!!!</h1>
-        }
+        const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.29844139999999&lng=77.99313599999999&page_type=DESKTOP_WEB_LISTING");
+        const responseJson = await response.json();
+        const initialRestaurant = responseJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        setAllRestaurants(initialRestaurant);            
+        setFilteredRestaurants(initialRestaurant);
     }
 
-    if(filteredRestaurants?.length === 0) return <h1>Not Restaurants Found!!!!!!</h1>
+    if(!allRestaurants){
+        return <Shimmer/>
+    }
 
     return allRestaurants?.length === 0 ? (
         <Shimmer/>
@@ -49,7 +45,7 @@ const Body = () => {
             <div className="restaurantList">
                 {   
                     filteredRestaurants?.map((restaurant) => {
-                        return <RestaurantCard {...restaurant.info} key={restaurant.info.id}/>
+                        return (<RestaurantCard {...restaurant.info} key={restaurant.info.id}/>)
                     })
                 }
             </div>
