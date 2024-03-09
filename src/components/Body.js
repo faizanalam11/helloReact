@@ -20,6 +20,7 @@ const Body = () => {
 
     async function getRestaurants(){
         const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.29844139999999&lng=77.99313599999999&page_type=DESKTOP_WEB_LISTING");
+        console.log(response);
         const responseJson = await response.json();
         const initialRestaurant = responseJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         setAllRestaurants(initialRestaurant);            

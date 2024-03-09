@@ -1,0 +1,96 @@
+import {createElement as ce} from "react";
+import reactDom from "react-dom/client";
+
+
+//React Element
+const heading = ce("h1", {
+    id: "title",
+    key: "h1"
+}, "React Element");
+
+//---------------------------------------------------------------------------------------------------
+//jsx => React.createElement => object => HTML(DOM)
+//jsx expression
+const heading2 = <h2 id="title" key="h2">React element/ JSX</h2>
+
+//React Component
+//(a)Functional based comp --> New Way & (b)Class based comp --> old way
+//Functional component is a function that return jsx or react ele or a composition of react elem
+//Component name starts in capital letter --> good practice
+
+
+//This is how wo add react element in func comp in line 25
+const HeaderComponent = () => {
+    return (
+        <div>
+            {heading2}  
+            <h1>Namaster react functional component</h1>
+            <h2>Namaster react functional component</h2>
+        </div>);
+};
+//---------------------------------------------------------------------------------------------------
+
+// const HeaderComponent = () => (<div><h1>Namaster react functional component</h1>
+//                                     <h2>Namaster react functional component</h2>
+//                                 </div>);
+
+// const container = ce("div", {
+//     id: "container"
+// }, [heading, heading2]);
+
+//---------------------------------------------------------------------------------------------------
+// const heading2 = () => (<h2 id="title" key="h2">
+//                             React element/ JSX
+//                         </h2>
+//                         );
+
+// This is how wo add functional comp in another func comp in line 49
+// const HeaderComponent = () => {
+//     return (
+//         <div>
+//             <heading2 /> or {heading2()}
+//             <h1>Namaster react functional component</h1>
+//             <h2>Namaster react functional component</h2>
+//         </div>);
+// };
+//---------------------------------------------------------------------------------------------------
+
+const root = reactDom.createRoot(document.getElementById("root"));
+
+
+//when render react element
+// root.render(container);
+
+//when render functional component
+root.render(<HeaderComponent />);
+
+React.Fragment is a component exported by react --> <></> or <React.Fragment></React.Fragment>
+
+const kolkataBiryani = {
+    name: "Kolkata Biryani",
+    image: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/cy6c1inqtw7wsfalh1nm",
+    cusines: ["Hyderabadi", "Indian"],
+    ratings: "4.6"
+}
+
+/*
+            -Heading
+                -Logo
+                -Navbar(Right Side)
+                -cart
+
+            -Body
+                -Search Bar
+                -Restraunt List
+                    -Image
+                    -Name
+                    -Star rating
+                    -cusines
+
+            -Footer
+                -links
+                -copyright
+        */
+
+            // const searchVar = useState();
+    // [searchText, setSearchText] = searchVar;

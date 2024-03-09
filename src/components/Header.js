@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Title = () => (
-    <a href="/"><img alt="logo" id="logo" src="https://files.yappe.in/place/full/food-villa-family-restaurant-hotel-4642683.webp"/></a>
+    <a href="/"><img alt="logo" id="logo" src="https://yt3.googleusercontent.com/HipIhegQlrlSzBGZSUtOPYyA2VGbo2qyXmIdYNkodW-HVF01t5CX-MrXoDKnf9R5UErOmCbnbA=s900-c-k-c0x00ffffff-no-rj"/></a>
 );
 
 const Header = () => {
