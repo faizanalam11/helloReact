@@ -10,13 +10,19 @@
     border-bottom: 1.5px solid black;
 }
 
+.header > #logo{
+    width: 100px;
+}
+
 .header > button{
-    height: 30px;
-    width: 60px;
+    height: 40px;
+    width: 90px;
     padding: 4px;
     margin: 10px;
-    background-color: #e60023;
-    border-radius: 40%;
+    background-color: #863332;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
 }
 
@@ -29,16 +35,19 @@
     align-items: center;
     flex-direction: row;
     list-style: none;
+    gap: 10px;
 }
 
 .nav-items > ul > li{
     padding: 10px;
+    color: #863332;
 }
 
-.header > .nav-items > ul > a > li{
-    gap: 10px;
-    list-style: none;
+.nav-items a{
+    text-decoration: none;
+    color: #863332;
 }
+
 
 .search-container{
     margin: 10px;
