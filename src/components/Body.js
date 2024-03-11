@@ -19,10 +19,13 @@ const Body = () => {
     },[]);
 
     async function getRestaurants(){
-        const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.29844139999999&lng=77.99313599999999&page_type=DESKTOP_WEB_LISTING");
-        console.log(response);
+        const response = await fetch("https://corsproxy.org/?" +
+        encodeURIComponent(
+          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=14.444057&lng=75.908034&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        ));
         const responseJson = await response.json();
-        const initialRestaurant = responseJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        console.log(responseJson);
+        const initialRestaurant = responseJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         setAllRestaurants(initialRestaurant);            
         setFilteredRestaurants(initialRestaurant);
     }

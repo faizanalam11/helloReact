@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Title = () => (
-    <a href="/"><img alt="logo" id="logo" src="https://cdn.dribbble.com/users/907922/screenshots/5952962/food-factory-1.jpg"/></a>
+    <div id="logo">
+        <h1>Aahar Villa</h1>
+    </div>
 );
 
 const Header = () => {

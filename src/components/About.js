@@ -5,7 +5,7 @@ const About = () => {
         <div className="about">
             <section className="top">
                 <h1>About US !</h1>
-                <p>Food villa a food delivery web App</p>
+                <p>Aahar villa a food delivery web App</p>
                 <Outlet/>
             </section>
             
