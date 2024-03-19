@@ -1,25 +1,31 @@
-import { useEffect } from "react";
+import Shimmer from "./shimmerUI";
+import UseRestaurantMenu from "../utils/UseRestaurantMenu";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const RestaurantMenu = () => {
-    const {id} = useParams();
+    const [showIndex, setShowIndex] = useState(0);
 
-    useEffect(() => {
-        getRestaurantsInfo();
-    }, []);
+    const { resId } = useParams();
+    const resInfo= UseRestaurantMenu(resId);
 
-    async function getRestaurantsInfo(){
-        const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.29844139999999&lng=77.99313599999999&menuId=229");
-        const responseJson = await response.json();
-        console.log(responseJson);
+    if(resInfo === null){
+        return (
+            <Shimmer/>
+        )
     }
+
+    const name = resInfo?.cards[0]?.card?.card?.info?.name;
+    const cuisines = resInfo?.cards[0]?.card?.card?.info?.cuisines;
+    const costForTwoMessage = resInfo?.cards[0]?.card?.card?.info?.costForTwoMessage;
 
     return (
         <div>
-            <h1>Restaurant id: { id }</h1>
-            <h2>Hello</h2>
+            <h1>{name}</h1>
+            <p>{cuisines.join(", ")} - {costForTwoMessage}
+            </p>
         </div>
-    );
-};
+      )
+}
 
 export default RestaurantMenu;

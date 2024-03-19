@@ -1,27 +1,46 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/image/logo.jpg";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Title = () => (
     <div id="logo">
-        <h1>Aahar Villa</h1>
+        <a href="/">
+            <img className="h-20 m-3 p-1" src={Logo} alt="logo"/>
+        </a>
     </div>
 );
 
 const Header = () => {
+    const login = () => {
+        toast.success("LoggedIn Successfull", { position: "top-center"});
+    }
+
+    const logout = () => {
+        toast.success("LoggedOut Successfull", { position: "top-center"});
+    }
     [isLoggedIn, setIsLoggedIn] = useState(false);
     return (
-        <div className="header">
+        <div className="flex justify-between bg-[#242529] shadow-lg">
             <Title/>
             <div className="nav-items">
-                <ul>
-                    <Link to="/"><li>Home</li></Link>
-                    <Link to="/about"><li>About</li></Link>
-                    <Link to="/contact" ><li>Contact</li></Link>
-                    <li>Cart</li>
+                <ul className="flex p-2 my-7">
+                    <li className="px-2 text-white"><Link to="/">Home</Link></li>
+                    <li className="px-2 text-white"><Link to="/about">About</Link></li>
+                    <li className="px-2 text-white"><Link to="/contact" >Contact</Link></li>
+                    <li className="px-2 text-white">Cart</li>
                 </ul>
             </div>
+            <ToastContainer className="toaster"/>
             {
-                isLoggedIn ? (<button onClick={() => setIsLoggedIn(false)}><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>Log Out</button>) : (<button onClick={() => setIsLoggedIn(true)}><svg xmlns="http://www.w3.org/2000/svg"  height="24" viewBox="0 -960 960 960" width="24"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>Log In</button>)
+                isLoggedIn ? (<button className="mx-6 my-7 p-2 flex bg-[#008ca8] rounded-lg text-white" onClick={() => {
+                    logout();
+                    setIsLoggedIn(false);
+                }}>Logout</button>) : (<button className="mx-6 my-7 p-2 flex bg-[#008ca8] rounded-lg text-white" onClick={() => {
+                    login();
+                    setIsLoggedIn(true);
+                }}>Login</button>)
             }
         </div>);
 };
