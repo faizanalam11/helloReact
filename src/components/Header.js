@@ -14,11 +14,11 @@ const Title = () => (
 
 const Header = () => {
     const login = () => {
-        toast.success("LoggedIn Successfull", { position: "top-center"});
+        toast.success("LoggedIn Successfull", { position: "bottom-center"});
     }
 
     const logout = () => {
-        toast.success("LoggedOut Successfull", { position: "top-center"});
+        toast.success("LoggedOut Successfull", { position: "bottom-center"});
     }
     [isLoggedIn, setIsLoggedIn] = useState(false);
     return (
@@ -34,10 +34,10 @@ const Header = () => {
             </div>
             <ToastContainer className="toaster"/>
             {
-                isLoggedIn ? (<button className="mx-6 my-7 p-2 flex bg-[#008ca8] rounded-lg text-white" onClick={() => {
+                isLoggedIn ? (<button className="mx-6 my-7 p-2 flex bg-[#008ca8] rounded-lg text-white min-w-20 justify-center" onClick={() => {
                     logout();
                     setIsLoggedIn(false);
-                }}>Logout</button>) : (<button className="mx-6 my-7 p-2 flex bg-[#008ca8] rounded-lg text-white" onClick={() => {
+                }}>Logout</button>) : (<button className="mx-6 my-7 p-2 flex bg-[#008ca8] rounded-lg text-white min-w-20 justify-center" onClick={() => {
                     login();
                     setIsLoggedIn(true);
                 }}>Login</button>)
