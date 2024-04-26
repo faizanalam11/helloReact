@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom";
 
 const RestaurantMenu = () => {
     const [showIndex, setShowIndex] = useState(0);
-
     const { resId } = useParams();
-    const resInfo= UseRestaurantMenu(resId);
+    console.log(resId);
+    const resInfo= UseRestaurantMenu(4046);
 
     if(resInfo === null){
         return (
@@ -15,9 +15,9 @@ const RestaurantMenu = () => {
         )
     }
 
-    const name = resInfo?.cards[0]?.card?.card?.info?.name;
-    const cuisines = resInfo?.cards[0]?.card?.card?.info?.cuisines;
-    const costForTwoMessage = resInfo?.cards[0]?.card?.card?.info?.costForTwoMessage;
+    const name = resInfo?.cards[2]?.card?.card?.info?.name;
+    const cuisines = resInfo?.cards[2]?.card?.card?.info?.cuisines;
+    const costForTwoMessage = resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage;
 
     return (
         <div>

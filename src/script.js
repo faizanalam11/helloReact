@@ -6,7 +6,8 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/profile";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import Login from "./components/Login";
 const About = lazy(() => import("./components/About"));
 const Contact = lazy(() => import("./components/contact"));
 
@@ -42,11 +43,15 @@ const appRouter = createBrowserRouter([
                 element: <Body/>,
             },
             {
-                path: "/restaurant/:id",
+                path: "/restaurant/:resId",
                 element: <RestaurantMenu/>
-            }
+            },
         ]
     },
+    {
+        path: "/login",
+        element: <Login/>
+    }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

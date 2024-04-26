@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { MENU_API } from "../config";
 
 const UseRestaurantMenu = (resId) => {
-    const [restaurantMenuInfo, setRestaurantMenuInfo] = useState();
+    console.log(`this is use res menu ${resId}`);
+    const [restaurantMenuInfo, setRestaurantMenuInfo] = useState(null);
     useEffect(() => {
         getRestaurantsInfo();
     }, []);
 
     async function getRestaurantsInfo(){
-        const response = await fetch(MENU_API + resId);
+        const url = `${MENU_API}${resId}`
+        const response = await fetch(url);
         const responseJson = await response.json();
-        console.log(responseJson.data);
         setRestaurantMenuInfo(responseJson?.data);
     }
 

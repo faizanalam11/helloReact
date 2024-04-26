@@ -27,8 +27,8 @@ const Body = () => {
     const isOnline = useOnline();
     if(!isOnline){
         return (
-            <div className="center">
-                <h1>🔴 Please check you internet connection!!</h1>
+            <div className="text-center">
+                <h1 className="m-auto">🔴 Please check you internet connection!!</h1>
             </div>
         );
     }
@@ -40,10 +40,10 @@ const Body = () => {
     return allRestaurants?.length === 0 ? (
         <Shimmer/>
         ) : (
-        <>
-            <div className="m-2">
-                <input type="text" className="bg-[#d3d3d34d] focus:bg-gray-200 hover:bg-gray-200 min-w-96 rounded-lg p-2 m-2 focus:border-[#008ca8]" placeholder="Search Food" value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
-                <button className="p-2 bg-[#008ca8] rounded-lg text-white" 
+        <div className="flex flex-col">
+            <div className="mx-auto  my-2">
+                <input type="text" className="bg-[#d3d3d34d] focus:bg-gray-200 hover:bg-gray-200 min-w-96 rounded-l-lg p-2 focus:border-[#008ca8] m-auto" placeholder="Search a restaurant you want..." value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+                <button className="p-2 bg-[#008ca8] rounded-r-lg text-white" 
                 onClick={() => {
                     const data = filterData(searchText, allRestaurants);
                     setFilteredRestaurants(data);
@@ -55,13 +55,13 @@ const Body = () => {
                         return (
                             <Link to={"/restaurant/" + restaurant?.info?.id}
                             key={restaurant?.info?.id}>
-                                <RestaurantCard {...restaurant?.info} key={restaurant?.info?.id}/>
+                                <RestaurantCard {...restaurant?.info}/>
                             </Link>
                         );
                     })
                 }
             </div>
-        </>
+        </div>
     );
 }
 

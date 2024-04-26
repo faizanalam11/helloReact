@@ -29,10 +29,12 @@
     "tailwindcss": "^3.4.1"
   },
   "dependencies": {
+    "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.2",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "yup": "^1.4.0"
   },
   "browserslist": [
     "last 3 versions"
