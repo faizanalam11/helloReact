@@ -21,9 +21,9 @@ const RestaurantMenu = () => {
     const costForTwoMessage = resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage;
 
     return (
-        <div>
-            <img src={restaurantImage}/>
-            <h1>{name}</h1>
+        <div className="p-2">
+            <img src={restaurantImage} alt={name}/>
+            <h1 className="font-bold">{name}</h1>
             <p>{cuisines.join(", ")} - {costForTwoMessage}
             </p>
         </div>
