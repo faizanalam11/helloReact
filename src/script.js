@@ -25,6 +25,14 @@ const appRouter = createBrowserRouter([
         errorElement: <Error/>,
         children: [
             {
+                path: "/",
+                element: <Body/>,
+            },
+            {
+                path: "/restaurant/:resId",
+                element: <RestaurantMenu/>
+            },
+            {
                 path: "/about",
                 element: <Suspense fallback={<h1 className="center">Loading....</h1>}><About/></Suspense>,
                 children: [
@@ -37,14 +45,6 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Suspense fallback={<h1 className="center">Loading....</h1>}><Contact/></Suspense>
-            },
-            {
-                path: "/",
-                element: <Body/>,
-            },
-            {
-                path: "/restaurant/:resId",
-                element: <RestaurantMenu/>
             },
         ]
     },
